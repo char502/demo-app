@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ProfileProps } from "../App";
+import { Users } from "../model/users";
 // import { ProfileProps } from "../App";
 
 const Profiles = ({ profiles }: any) => {
@@ -11,10 +12,10 @@ const Profiles = ({ profiles }: any) => {
       <header>This is the profiles page</header>
 
       <ul>
-        {profiles.map((profile: ProfileProps) => {
+        {profiles.map((profile: Users) => {
           return (
-            <li key={profile.userId}>
-              <Link to={`/profile/${profile.userId}`}>{profile.name}</Link>
+            <li key={profile.id}>
+              <Link to={`/profile/${profile.id}`}>{profile.name}</Link>
             </li>
           );
         })}

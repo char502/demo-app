@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -14,6 +14,8 @@ import {
   useMatch,
   Navigate,
 } from "react-router-dom";
+import { getUsers } from "./utils/getUsers";
+import { Users } from "./model/users";
 
 export interface ProfileProps {
   userId: number;
@@ -54,12 +56,17 @@ function App() {
 
   let activeClassName = "nav-active";
 
-  //  const [profiles, setProfiles] = useState<any>()
-  //
+  const [profiles, setProfiles] = useState<Users>();
 
-  // useEffect(() => {
+  useEffect(() => {
+    const fetchAndSetUsers = async () => {
+      const results = await getUsers();
+      setProfiles(results);
+    };
+    fetchAndSetUsers();
+  }, []);
 
-  // }, [input]);
+  console.log(profiles);
 
   // const match = useMatch("/profile/:userId");
   // const prof: any = match
@@ -83,7 +90,7 @@ function App() {
           >
             Home
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="about"
             className={({ isActive }) =>
               isActive ? activeClassName : undefined
@@ -98,23 +105,17 @@ function App() {
             }
           >
             Contact
-          </NavLink>
-          {/* <NavLink to="dashboard">Dashboard</NavLink> */}
+          </NavLink> */}
           <NavLink to="profiles">Profiles</NavLink>
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
-          {/* <Route path="dashboard" element={<Navigate to="/" />} /> */}
-
+          {/* <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} /> */}
+          <Route path="/profiles" element={<Profiles profiles={profiles} />} />
           <Route
-            path="/profiles"
-            element={<Profiles profiles={profilesFromApi} />}
-          />
-          <Route
-            path="/profile/:userId"
-            element={<Profile profiles={profilesFromApi} />}
+            path="/profile/:id"
+            element={<Profile profiles={profiles} />}
           />
           <Route path="*" element={<Error />} />
         </Routes>
