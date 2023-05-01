@@ -16,47 +16,15 @@ import {
 } from "react-router-dom";
 import { getUsers } from "./utils/getUsers";
 import { Users } from "./model/users";
+// @ts-ignore
+import { Navbar } from "./components/Navbar";
 
-export interface ProfileProps {
-  userId: number;
-  name: string;
-  surname: string;
-  age: number;
-}
-
-const profilesFromApi: ProfileProps[] = [
-  {
-    userId: 1,
-    name: "Andrew",
-    surname: "Birne",
-    age: 45,
-  },
-  {
-    userId: 2,
-    name: "Amy",
-    surname: "Ryan",
-    age: 32,
-  },
-  {
-    userId: 3,
-    name: "Martin",
-    surname: "Simpson",
-    age: 27,
-  },
-  {
-    userId: 4,
-    name: "Oscar",
-    surname: "Phillips",
-    age: 35,
-  },
-];
+// import Navbar from "./components/Navbar";
 
 function App() {
-  // let profiles: ProfileProps[] = profilesFromApi;
-
   let activeClassName = "nav-active";
 
-  const [profiles, setProfiles] = useState<Users>();
+  const [profiles, setProfiles] = useState<Users[] | undefined>();
 
   useEffect(() => {
     const fetchAndSetUsers = async () => {
@@ -77,47 +45,39 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
       <BrowserRouter>
         <header>
-          <h1>Demo App</h1>
+          <h1 className="text-6xl text-red-500">Demo App</h1>
         </header>
         <nav>
           <NavLink
             to=""
-            className={({ isActive }) =>
-              isActive ? activeClassName : undefined
-            }
+            // className={({ isActive }) =>
+            //   isActive ? activeClassName : undefined
+            // }
+            className="text-black aria-[current=page]:text-blue-400"
           >
             Home
           </NavLink>
-          {/* <NavLink
-            to="about"
-            className={({ isActive }) =>
-              isActive ? activeClassName : undefined
-            }
-          >
-            About
-          </NavLink>
           <NavLink
-            to="contact"
-            className={({ isActive }) =>
-              isActive ? activeClassName : undefined
-            }
+            to="profiles"
+            // className={({ isActive }) =>
+            //   isActive ? activeClassName : undefined
+            // }
+            className="text-black aria-[current=page]:text-blue-400"
           >
-            Contact
-          </NavLink> */}
-          <NavLink to="profiles">Profiles</NavLink>
+            Profiles
+          </NavLink>
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} /> */}
           <Route path="/profiles" element={<Profiles profiles={profiles} />} />
           <Route
             path="/profile/:id"
             element={<Profile profiles={profiles} />}
           />
-          <Route path="*" element={<Error />} />
+          {/* <Route path="*" element={<Error />} /> */}
         </Routes>
       </BrowserRouter>
     </div>
