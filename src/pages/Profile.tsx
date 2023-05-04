@@ -1,21 +1,35 @@
 import React, { useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import { ContactsLayout } from "../components/ContactsLayout";
+import { Button } from "../components/Button";
 
 function Profile({ profiles }: any) {
   const { id } = useParams();
 
-  const selectedProfile = profiles.find(
+  const selectedProfile = profiles?.find(
     (profile: { id: number }) => profile.id === Number(id)
   );
 
   return (
-    <div>
-      <p>The id of this user is {selectedProfile.id}</p>
-
-      <p>Name: {selectedProfile.name}</p>
-      <p>Email: {selectedProfile.email}</p>
-      <p>Website: {selectedProfile.website}</p>
-    </div>
+    <>
+      <div className="w-80 m-auto">
+        <p>Profile page</p>
+        <ContactsLayout
+          id={selectedProfile?.id}
+          name={selectedProfile?.name}
+          username={selectedProfile?.username}
+          phone={selectedProfile?.phone}
+          company={selectedProfile?.company?.name}
+          email={selectedProfile?.email}
+          website={selectedProfile?.website}
+        />
+        <div className="my-6">
+          <Link to="/">
+            <Button buttonText={"Back to Home"} />
+          </Link>
+        </div>
+      </div>
+    </>
   );
 }
 

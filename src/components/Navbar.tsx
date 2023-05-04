@@ -1,18 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Transition } from "@headlessui/react";
-import {
-  BrowserRouter,
-  NavLink,
-  Routes,
-  Route,
-  useMatch,
-  Navigate,
-} from "react-router-dom";
+import { NavLink } from "react-router-dom";
+// import classnames from "classnames";
 
 export const Navbar = () => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div>
       <nav className="bg-gray-800">
@@ -28,40 +23,22 @@ export const Navbar = () => {
               </div>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
-                  <a
-                    href="#"
-                    className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Dashboard
-                  </a>
+                  <nav>
+                    <NavLink
+                      to=""
+                      className="hover:bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                      aria-current="page"
+                    >
+                      Home
+                    </NavLink>
 
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Team
-                  </a>
-
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Projects
-                  </a>
-
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Calendar
-                  </a>
-
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Reports
-                  </a>
+                    <NavLink
+                      to="profiles"
+                      className="text-gray-300 hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Profiles
+                    </NavLink>
+                  </nav>
                 </div>
               </div>
             </div>
@@ -123,40 +100,22 @@ export const Navbar = () => {
         >
           <div className="md:hidden" id="mobile-menu">
             <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <a
-                href="#"
-                className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
-              >
-                Dashboard
-              </a>
+              <nav>
+                <NavLink
+                  to=""
+                  className="hover:bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
+                  aria-current="page"
+                >
+                  Home
+                </NavLink>
 
-              <a
-                href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              >
-                Team
-              </a>
-
-              <a
-                href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              >
-                Projects
-              </a>
-
-              <a
-                href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              >
-                Calendar
-              </a>
-
-              <a
-                href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              >
-                Reports
-              </a>
+                <NavLink
+                  to="profiles"
+                  className="text-gray-300 hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
+                >
+                  Profiles
+                </NavLink>
+              </nav>
             </div>
           </div>
         </Transition>
