@@ -1,19 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { ContactsLayout } from "../components/ContactsLayout";
 import { Button } from "../components/Button";
+import { Users } from "../model/users";
 
-function Profile({ profiles }: any) {
+const Profile = (props: { profiles: Users[] }) => {
   const { id } = useParams();
 
-  const selectedProfile = profiles?.find(
+  const selectedProfile = props.profiles?.find(
     (profile: { id: number }) => profile.id === Number(id)
   );
 
   return (
     <>
       <div className="w-80 m-auto">
-        <p>Profile page</p>
+        <p className="text-2xl font-bold flex justify-center">
+          Individual Profiles page
+        </p>
         <ContactsLayout
           id={selectedProfile?.id}
           name={selectedProfile?.name}
@@ -23,7 +26,7 @@ function Profile({ profiles }: any) {
           email={selectedProfile?.email}
           website={selectedProfile?.website}
         />
-        <div className="my-6">
+        <div className="my-6 flex justify-center">
           <Link to="/">
             <Button buttonText={"Back to Home"} />
           </Link>
@@ -31,6 +34,6 @@ function Profile({ profiles }: any) {
       </div>
     </>
   );
-}
+};
 
 export default Profile;

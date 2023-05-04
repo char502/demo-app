@@ -1,5 +1,3 @@
-import { Users } from "../../../model/users";
-
 export const contactsTestData = [
   {
     id: 1,
@@ -22,6 +20,29 @@ export const contactsTestData = [
       name: "Ai International",
       catchPhrase: "Ai is cool",
       bs: "very important",
+    },
+  },
+  {
+    id: 2,
+    name: "Mary Poppins",
+    username: "MMP",
+    email: "mary@test.com",
+    address: {
+      street: "Film Street",
+      suite: "8",
+      city: "Hollywood",
+      zipcode: "785 124 63",
+      geo: {
+        lat: "-37.3159",
+        lng: "81.1496",
+      },
+    },
+    phone: "8965 856997",
+    website: "maryPoppins@somewhere.co.uk",
+    company: {
+      name: "Magic Things",
+      catchPhrase: "MAgic is cool",
+      bs: "very strict",
     },
   },
 ];

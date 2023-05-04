@@ -1,5 +1,4 @@
 import React from "react";
-import { Company } from "../model/users";
 
 interface ContactsLayoutProps {
   id: number;

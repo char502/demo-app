@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Transition } from "@headlessui/react";
 import { NavLink } from "react-router-dom";
-// import classnames from "classnames";
+import profileImage2 from "../assets/images/profileImage2.png";
+import cross from "../assets/images/cross.png";
 
 export const Navbar = () => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -16,9 +17,9 @@ export const Navbar = () => {
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <img
-                  className="h-8 w-8"
-                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                  alt="Workflow"
+                  className="h-8 w-8 rounded-md"
+                  alt="profile image"
+                  src={profileImage2}
                 />
               </div>
               <div className="hidden md:block">
@@ -28,6 +29,7 @@ export const Navbar = () => {
                       to=""
                       className="hover:bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
                       aria-current="page"
+                      aria-label="home link main"
                     >
                       Home
                     </NavLink>
@@ -35,6 +37,7 @@ export const Navbar = () => {
                     <NavLink
                       to="profiles"
                       className="text-gray-300 hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+                      aria-label="profiles link main"
                     >
                       Profiles
                     </NavLink>
@@ -68,21 +71,11 @@ export const Navbar = () => {
                     />
                   </svg>
                 ) : (
-                  <svg
-                    className="block h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
+                  <img
+                    className="h-6 w-6 rounded-md"
+                    alt="close cross"
+                    src={cross}
+                  />
                 )}
               </button>
             </div>
@@ -105,6 +98,7 @@ export const Navbar = () => {
                   to=""
                   className="hover:bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
                   aria-current="page"
+                  aria-label="home link mobile"
                 >
                   Home
                 </NavLink>
@@ -112,6 +106,7 @@ export const Navbar = () => {
                 <NavLink
                   to="profiles"
                   className="text-gray-300 hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
+                  aria-label="profiles link mobile"
                 >
                   Profiles
                 </NavLink>

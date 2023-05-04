@@ -5,16 +5,18 @@ import { useNavigate } from "react-router-dom";
 const demoPoints = [
   "React",
   "TypeScript",
+  "Tailwind.css",
   "Passing props",
   "React-router",
-  "Calling an api",
+  "Calling an api and combining with dynamic routing",
   "Folder structure - assets, models, utils, components, pages",
   "Reusable components - Button, contactsLayout",
-  "Testing",
+  "Responsiveness - on reusable header and nav bar",
+  "Testing - rendering - change on button click - router links",
   "Use of images",
 ];
 
-function Home() {
+const Home = () => {
   let navigate = useNavigate();
   return (
     <div className="flex justify-center">
@@ -41,6 +43,6 @@ function Home() {
       </div>
     </div>
   );
-}
+};
 
 export default Home;
