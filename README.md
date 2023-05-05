@@ -8,7 +8,7 @@
 
 - Demoing an app in React
 - Use of TypeScript
-- Configuring and using TypeScript
+- Configuring and using Tailwind CSS
 - Passing props
 - Using React Router 6
 - Calling an api and combining with dynamic routing
